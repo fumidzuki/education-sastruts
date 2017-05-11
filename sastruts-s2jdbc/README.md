@@ -36,13 +36,13 @@ JavaのWebフレームワークの使用方法、DBへの接続とCRUD処理の�
     <td>識別子</td>
     <td>id</td>
     <td>BIGINT</td>
-    <td>主キー,オートインクリメント</td>
+    <td>主キー、オートインクリメント</td>
   </tr>
   <tr>
     <td>顧客ID</td>
     <td>customer_id</td>
     <td>VARCHAR(64)</td>
-    <td>ユニークキー,NOTNULL,半角英数字のみ</td>
+    <td>ユニークキー、NOTNULL、半角英数字のみ</td>
   </tr>
   <tr>
     <td>名称</td>
@@ -54,13 +54,13 @@ JavaのWebフレームワークの使用方法、DBへの接続とCRUD処理の�
     <td>郵便番号</td>
     <td>zipcode</td>
     <td>VARCHAR(7)</td>
-    <td>NOTNULL,半角数字のみ</td>
+    <td>NOTNULL、半角数字のみ</td>
   </tr> 
   <tr>
     <td>都道府県</td>
     <td>prefecture_id</td>
     <td>VARCHAR(2)</td>
-    <td>NOTNULL,半角数字のみ</td>
+    <td>NOTNULL、半角数字のみ</td>
   </tr> 
   <tr>
     <td>住所</td>
@@ -87,3 +87,38 @@ JavaのWebフレームワークの使用方法、DBへの接続とCRUD処理の�
     <td>NOTNULL</td>
   </tr> 
 </table>
+
+#### 都道府県情報マスタ
+
+* 論理テーブル名：都道府県情報マスタ
+* 物理テーブル名：prefecture
+
+<table>
+  <tr>
+    <th>論理名</th>
+    <th>物理名</th>
+    <th>データ型</th>
+    <th>備考</th>
+  </tr>
+  <tr>
+    <td>識別子</td>
+    <td>id</td>
+    <td>BIGINT</td>
+    <td>主キー</td>
+  </tr>
+  <tr>
+    <td>都道府県ID</td>
+    <td>prefecture_id</td>
+    <td>CHAR(2)</td>
+    <td>ユニークキー、NOTNULL</td>
+  </tr>
+  <tr>
+    <td>名称</td>
+    <td>name</td>
+    <td>VARCHAR(64)</td>
+    <td>NOTNULL</td>
+  </tr>
+</table>
+
+※「都道府県情報マスタ」の「都道府県ID」、「名称」は、「ISO 3166-2:JP」を参考にして設定します。
+https://ja.wikipedia.org/wiki/ISO_3166-2:JP
