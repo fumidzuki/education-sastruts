@@ -69,9 +69,9 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portab
     <td>NOTNULL、半角数字のみ</td>
   </tr> 
   <tr>
-    <td>都道府県</td>
+    <td>都道府県ID</td>
     <td>prefecture_id</td>
-    <td>VARCHAR(2)</td>
+    <td>CHAR(2)</td>
     <td>NOTNULL、半角数字のみ</td>
   </tr> 
   <tr>
@@ -113,16 +113,10 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portab
     <th>備考</th>
   </tr>
   <tr>
-    <td>識別子</td>
-    <td>id</td>
-    <td>BIGINT</td>
-    <td>主キー</td>
-  </tr>
-  <tr>
     <td>都道府県ID</td>
     <td>prefecture_id</td>
     <td>CHAR(2)</td>
-    <td>ユニークキー、NOTNULL</td>
+    <td>主キー、NOTNULL</td>
   </tr>
   <tr>
     <td>名称</td>
