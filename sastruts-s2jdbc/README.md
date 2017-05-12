@@ -154,7 +154,7 @@ http://sastruts.seasar.org/featureReference.html#Validator
 
 ## Screen Layout
 
-### 顧客情報一覧画面顧客
+### 顧客情報一覧画面
 
 #### Overview
 
@@ -162,9 +162,60 @@ http://sastruts.seasar.org/featureReference.html#Validator
 
 #### Layout
 
+![顧客情報一覧画面](https://github.com/fumidzuki/education-sastruts/blob/master/sastruts-s2jdbc/images/list.png)
+
 #### Description
 
 * 「新規登録」リンク押下時に、「新規登録入力画面」を表示します。
 * 1件も登録されていない場合は、「顧客情報が未登録です。」を表示します。
 * 一覧には、「顧客情報.識別子」の「昇順」で表示します。
 
+### 顧客情報登録入力画面
+
+#### Overview
+
+顧客情報を登録するための入力画面を表示します。
+
+#### Layout
+
+![顧客情報登録入力画面](https://github.com/fumidzuki/education-sastruts/blob/master/sastruts-s2jdbc/images/create_input.png)
+
+#### Description
+
+* 初期表示時は、すべて未入力の状態で表示する。「確認画面」から戻ってきた場合は、入力内容は維持します。
+* 都道府県表示は、「都道府県マスタ」から取得した「名称」を表示します。表示順は「都道府県ID」を昇順で表示します。
+* 「確認」ボタン押下時に、入力した項目の入力値確認処理を実施します。
+  * 入力値確認処理に問題ない場合は、「登録確認画面」を表示します。
+  * 入力値確認処理に問題ある場合は、「登録入力」画面を再表示します。入力内容は維持します。
+* 「戻る」ボタン押下時に、「顧客情報一覧画面」を表示します。
+
+### 顧客情報登録確認画面
+
+#### Overview
+
+顧客情報入力画面で入力した情報を確認するための画面を表示します。
+
+#### Layout
+
+![顧客情報登録確認画面](https://github.com/fumidzuki/education-sastruts/blob/master/sastruts-s2jdbc/images/create_confirm.png)
+
+#### Description
+
+* 初期表示時は、「顧客情報登録入力画面」で入力した情報を表示します。
+* 「登録」ボタン押下時に、顧客情報の登録処理を実施します。登録処理が完了した場合は、「顧客情報登録完了画面」を表示します。
+* 「戻る」ボタン押下時に、「顧客情報登録入力画面」を表示します。
+
+### 顧客情報登録完了画面
+
+#### Overview
+
+顧客情報の登録が完了情報を表示するための画面を表示します。
+
+#### Layout
+
+![顧客情報登録完了画面](https://github.com/fumidzuki/education-sastruts/blob/master/sastruts-s2jdbc/images/create_complete.png)
+
+#### Description
+
+* 初期表示時は、「顧客情報登録確認画面」で表示した情報を表示します。
+* 「一覧画面へ」ボタン押下時に、「顧客情報一覧画面」を表示します。
