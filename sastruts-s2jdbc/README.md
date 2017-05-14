@@ -8,19 +8,32 @@ JavaのWebフレームワークの使用方法、DBへの接続とCRUD処理の�
 
 ## Requirement
 
-### Development Environment
+### SAStruts
 
-開発環境は以下を使用します。
+「SAStruts」についての詳しい説明は、[こちら](http://sastruts.seasar.org/)を参考にしてください。  
+使用できる機能については、[こちら](http://sastruts.seasar.org/featureReference.html)を参考にしてください。
 
-統合開発環境：Pleiades All in One Eclipse 4.6 / Java / Windows 32bit or 64 bit / Full Edition  
+### Eclipse
+
+統合開発環境のEclipseを使用します。[こちら](http://mergedoc.osdn.jp/)からダウンロードしてください。  
+Eclipse本体をダウンロードして必要なソフトウェアを追加してもよいのですが、必要な機能が一通りまとまっており、既に日本語対応されている「Pleiades All in One Eclipse」を使用します。  
+使用するバージョンは、「Pleiades All in One Eclipse 4.6 / Java / Windows 32bit or 64 bit / Full Edition」を使用します。  
 ※「Full Edtion」を使用すると「Java8」、「Tomcat」などの必要なプラグイン等も合わせて使用できるなるためこちらを使用します。  
-http://mergedoc.osdn.jp/
 
-DBサーバ：MySQL  
-※MySQLを簡易的に使用するため「xampp」を使用します。  
-https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portable-win32-5.6.30-1-VC11.zip/download
+### DB
 
-## Usage
+DBサーバは、MySQLを使用します。MySQLを直接インストールしてもよいのですが、簡易的に使用できる「xampp」を使用します。[こちら](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portable-win32-5.6.30-1-VC11.zip/download)からダウンロードしてください。  
+
+* インストールは、任意の場所にダウンロード後「setup_xampp.bat」を実行してください。
+* 「xampp-control.exe」を実行して「MySQL」の右の「Start」ボタンを押して実行してください。
+
+### Git
+
+バージョン管理システムを使用して、研修するためのテンプレートを取得します。
+https://github.com/fumidzuki/education-sastruts.git
+
+* Eclipseへの取り込みは、「ファイル」->「インポート」->「外部Mavenプロジェクト」を選択します。
+* ダウンロードしたディレクトリの「sastruts-s2jdbc」を選択して「OK」を押してください。
 
 ## System Design
 
@@ -30,7 +43,8 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portab
 
 ### Database
 
-アプリケーションで使用するデータベースの定義内容を記載します。
+アプリケーションで使用するデータベースの定義内容を記載します。  
+※DDLは、[こちら](https://github.com/fumidzuki/education-sastruts/blob/master/sastruts-s2jdbc/database/initialize.sql)を使用してください。  
 
 #### 顧客情報
 
@@ -67,37 +81,37 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portab
     <td>zipcode</td>
     <td>VARCHAR(7)</td>
     <td>NOTNULL、半角数字のみ</td>
-  </tr> 
+  </tr>
   <tr>
     <td>都道府県ID</td>
     <td>prefecture_id</td>
     <td>CHAR(2)</td>
     <td>NOTNULL、半角数字のみ</td>
-  </tr> 
+  </tr>
   <tr>
     <td>住所</td>
     <td>address</td>
     <td>VARCHAR(512)</td>
     <td>NOTNULL</td>
-  </tr> 
+  </tr>
   <tr>
     <td>電話番号</td>
     <td>tel</td>
     <td>VARCHAR(11)</td>
     <td>半角数字のみ</td>
-  </tr> 
+  </tr>
   <tr>
     <td>メールアドレス</td>
     <td>mail_address</td>
     <td>VARCHAR(256)</td>
     <td></td>
-  </tr> 
+  </tr>
   <tr>
     <td>バージョン番号</td>
     <td>version</td>
     <td>BIGING</td>
     <td>NOTNULL</td>
-  </tr> 
+  </tr>
 </table>
 
 #### 都道府県情報マスタ
@@ -116,7 +130,7 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portab
     <td>都道府県ID</td>
     <td>prefecture_id</td>
     <td>CHAR(2)</td>
-    <td>主キー、NOTNULL</td>
+    <td>主キー</td>
   </tr>
   <tr>
     <td>名称</td>
@@ -126,8 +140,8 @@ https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/5.6.30/xampp-portab
   </tr>
 </table>
 
-※「都道府県情報マスタ」の「都道府県ID」、「名称」は、「ISO 3166-2:JP」を参考にして設定します。
-https://ja.wikipedia.org/wiki/ISO_3166-2:JP
+※「都道府県情報マスタ」の「都道府県ID」、「名称」は、「ISO 3166-2:JP」を参考にして設定します。[こちら](https://ja.wikipedia.org/wiki/ISO_3166-2:JP)を参考にしています。  
+※登録するための「都道府県情報マスタ」は、[こちら](https://github.com/fumidzuki/education-sastruts/blob/master/sastruts-s2jdbc/database/master_insert.sql)を使用してください。
 
 ## Screen Common Design
 
@@ -149,8 +163,7 @@ https://ja.wikipedia.org/wiki/ISO_3166-2:JP
 入力確認時のメッセージは、使用するフレームワークに準備されたメッセージファイルを使用します。  
 メッセージが不足している場合は、適宜追加をしてください。  
 
-※SAStrutsの場合は、様々なメッセージがすでに用意されています。詳しくは以下のページを確認してください。
-http://sastruts.seasar.org/featureReference.html#Validator
+※SAStrutsの場合は、様々なメッセージがすでに用意されています。詳しくは、[こちら](http://sastruts.seasar.org/featureReference.html#Validator)のページを確認してください。
 
 ## Screen Layout
 
