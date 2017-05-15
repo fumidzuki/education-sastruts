@@ -27,13 +27,25 @@ DBサーバは、MySQLを使用します。MySQLを直接インストールし�
 * インストールは、任意の場所にダウンロード後「setup_xampp.bat」を実行してください。
 * 「xampp-control.exe」を実行して「MySQL」の右の「Start」ボタンを押して実行してください。
 
-### Git
+## Usage
 
-バージョン管理システムを使用して、研修するためのテンプレートを取得します。
-https://github.com/fumidzuki/education-sastruts.git
+### Eclipseへの取込
 
-* Eclipseへの取り込みは、「ファイル」->「インポート」->「外部Mavenプロジェクト」を選択します。
-* ダウンロードしたディレクトリの「sastruts-s2jdbc」を選択して「OK」を押してください。
+ファイルダウンロードからEclipseへ取込までは以下の手順で実施します。
+
+* ファイルを[こちら](https://github.com/fumidzuki/education-sastruts/archive/master.zip)からダウンロードして展開します。
+* Eclipseを起動して、「ファイル」->「インポート」-> 「Maven -> 既存 Maven プロジェクト」を選択して「次へ」を押してください。
+* 「ルートディレクトリ」に展開済みの「sastruts-s2jdbc」を選択して「完了」を押してください。
+* 取込が正常に完了すると「パッケージ・エクスプローラー」に「sastruts-s2jdbc」が登録されていることを確認してください。
+
+### Webアプリの実行
+
+取込が無事に終了した場合は、実際に実行できることを確認します。
+
+* 「sastruts-s2jdbc」を右クリック、「実行」 -> 「サーバで実行」を選択してください。
+* 実行するサーバの選択肢が表示されると思いますでの「Tomcat v8.0 サーバー」を選択して、「完了」を押してください。
+* 「コンソールタブ」が表示されて「Server startup in xxxx ms」が表示されていれば起動は完了しました。
+* 「 http://localhost:8080/sastruts-s2jdbc/ 」にアクセスして画面が表示されることを確認してください。
 
 ## System Design
 
