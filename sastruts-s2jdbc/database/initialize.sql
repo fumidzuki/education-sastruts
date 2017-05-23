@@ -1,4 +1,6 @@
-DROP SCHEMA IF EXISTS education;
+CREATE SCHEMA IF NOT EXISTS education;
+
+USE education;
 
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS prefecture;
@@ -9,7 +11,7 @@ DROP TABLE IF EXISTS prefecture;
 CREATE TABLE prefecture(
     prefecture_id                     CHAR(2)     NOT NULL COMMENT '都道府県ID',
     name                              VARCHAR(64)     NOT NULL COMMENT '名称'
-) COMMENT='都道府県情報マスタ';
+) COMMENT='都道府県情報マスタ' DEFAULT CHARSET=utf8;
 
 /**********************************/
 /* テーブル名: 顧客情報 */
@@ -24,7 +26,7 @@ CREATE TABLE customer(
     tel                               VARCHAR(11)     NULL  COMMENT '電話番号',
     mail_address                      VARCHAR(256)     NULL  COMMENT 'メールアドレス',
     version                           BIGINT(10)     NOT NULL COMMENT 'バージョン番号'
-) COMMENT='顧客情報';
+) COMMENT='顧客情報' DEFAULT CHARSET=utf8;
 
 
 ALTER TABLE prefecture ADD CONSTRAINT IDX_prefecture_PK PRIMARY KEY (prefecture_id);
@@ -32,3 +34,4 @@ ALTER TABLE prefecture ADD CONSTRAINT IDX_prefecture_PK PRIMARY KEY (prefecture_
 ALTER TABLE customer ADD CONSTRAINT IDX_customer_PK PRIMARY KEY (id);
 ALTER TABLE customer ADD CONSTRAINT IDX_customer_FK0 FOREIGN KEY (prefecture_id) REFERENCES prefecture (prefecture_id);
 
+ALTER TABLE customer CHANGE id id BIGINT(10) AUTO_INCREMENT;
