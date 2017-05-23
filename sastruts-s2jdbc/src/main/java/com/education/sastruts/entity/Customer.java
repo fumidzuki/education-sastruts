@@ -16,6 +16,7 @@ public class Customer implements Serializable {
 
   /** 識別子 */
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(precision = 19, nullable = false, unique = true)
   public Long id;
 
