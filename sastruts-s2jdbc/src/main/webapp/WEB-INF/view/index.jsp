@@ -4,7 +4,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>顧客管理 - 研修資料 -</title>
-<link rel="stylesheet" type="text/css" href="${f:url('/css/sa.css')}" />
 </head>
 <body>
   <div>
